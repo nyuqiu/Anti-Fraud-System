@@ -1,6 +1,7 @@
 package antifraud.controller;
 
 import antifraud.service.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,11 +13,8 @@ import java.util.Map;
 
 @RestController
 public class TransactionController {
-    private final TransactionService transactionService;
-
-    public TransactionController(TransactionService transactionService) {
-        this.transactionService = transactionService;
-    }
+    @Autowired
+    TransactionService transactionService;
 
     @PostMapping(value = "/api/antifraud/transaction", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
